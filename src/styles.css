@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+.button {
+  transition: 0.2s;
+}
+.less-opacity {
+  opacity: 0.6;
+}
+img {
+  background-size: cover;
+  object-fit: cover;
+  background-position: center;
+}
+
+.navbar {
+  z-index: 100;
+  transition: background-color 0.4s, padding 0.4s;
+}

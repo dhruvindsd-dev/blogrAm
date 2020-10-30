@@ -1,0 +1,50 @@
+<nav
+  #navbar
+  (window:scroll)="onScroll(navbar)"
+  class="navbar is-spaced is-fixed-top"
+>
+  <div class="navbar-brand">
+    <div class="navbar-item">
+      <p class="is-size-4">
+        <span class="icon is-medium"> <i class="fas fa-skull"></i></span>
+        <span class="has-text-black brand_name">BlogrAm</span>
+      </p>
+    </div>
+    <a
+      role="button"
+      class="navbar-burger"
+      data-target="navMenu"
+      aria-label="menu"
+      aria-expanded="false"
+    >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu" id="navMenu">
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <a class="button is-link is-light is-outlined"> Login </a>
+      </div>
+      <div class="navbar-item">
+        <a class="button is-link is-light is-outlined"> Signin </a>
+      </div>
+      <a class="navbar-item">
+        <p class="icon is-size-4">
+          <i class="fab fa-instagram fa-1.5x"></i>
+        </p>
+      </a>
+      <a class="navbar-item">
+        <p class="icon is-size-4">
+          <i class="fab fa-facebook-square fa-1.5x"></i>
+        </p>
+      </a>
+      <a class="navbar-item">
+        <p class="icon is-size-4">
+          <i class="fab fa-twitter fa-1.5x"></i>
+        </p>
+      </a>
+    </div>
+  </div>
+</nav>

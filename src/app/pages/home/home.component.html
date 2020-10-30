@@ -1,0 +1,72 @@
+<app-header></app-header>
+<div class="hero is-white">
+  <div class="hero-body" style="padding: 6rem 1.5rem 0 1.5rem">
+    <div class="columns">
+      <!-- <div class="column is-hidden-mobile"></div> -->
+      <div class="column is-7">
+        <figure class="image">
+          <img src="assets/tasks.svg" alt="" />
+        </figure>
+      </div>
+      <div class="column is-5" style="display: flex; align-items: center">
+        <div class="has-text-centered-mobile">
+          <p class="is-size-2 has-text-weight-bold has-text-black">
+            Some Cheesy Company Goal
+          </p>
+          <p class="is-size-4 is-size-5-mobile less_opacity has-text-black">
+            Some more cheesy company moto Lorem ipsum dolor sit amet..
+          </p>
+          <a
+            href="submit_article"
+            class="button is-outlined is-medium is-black"
+            style="margin-top: 20px"
+            ><span class="icon"><i class="far fa-file-alt"></i></span>
+            <span>Take action today</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <p class="is-size-4 has-text-weight-bold section">
+    <span class="icon is-large"><i class="fas fa-chart-line"></i></span>
+    <span>TRENDING BLOGS</span>
+  </p>
+  <div class="columns is-multiline">
+    <div class="column is-4" *ngFor="let blog of trendingBlogs">
+      <app-small-blog></app-small-blog>
+    </div>
+  </div>
+  <hr />
+  <div class="columns">
+    <!-- for blogs -->
+    <div class="column is-8">
+      <div *ngFor="let blog of trendingBlogs">
+        <app-blog></app-blog>
+        <hr />
+      </div>
+    </div>
+    <!-- for tags -->
+    <div class="column is-4">
+      <div class="section" style="position: sticky; top: 10px">
+        <p class="is-size-4 has-text-weight-bold">
+          <span class="icon is-large has-text-danger"
+            ><i class="fas fa-fire"></i
+          ></span>
+          <span>Popular Tags</span>
+        </p>
+        <div class="buttons section">
+          <div class="button is-outlined is-dark">Self</div>
+          <div class="button is-outlined is-dark">Relationships</div>
+          <div class="button is-outlined is-dark">Data Science</div>
+          <div class="button is-outlined is-dark">Programming</div>
+          <div class="button is-outlined is-dark">Javascript</div>
+          <div class="button is-outlined is-dark">Machine Learning</div>
+          <div class="button is-outlined is-dark">Politics</div>
+          <div class="button is-outlined is-dark">Health</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
