@@ -5,6 +5,6 @@ export class blogModal {
     public content: string,
     public img: string,
     public date: Date,
-    public author: string
+    public user: string
   ) {}
 }

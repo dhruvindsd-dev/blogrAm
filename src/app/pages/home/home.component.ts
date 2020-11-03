@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { blogModal } from 'src/app/modals/blog.modal';
+import { ApiService } from 'src/app/services/api.service';
 import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
@@ -9,10 +10,14 @@ import { BlogService } from 'src/app/services/blog.service';
 })
 export class HomeComponent implements OnInit {
   trendingBlogs: blogModal[];
-  constructor(private blogService: BlogService) {}
+  constructor(
+    private blogService: BlogService,
+    private apiService: ApiService
+  ) {}
 
   ngOnInit(): void {
     this.trendingBlogs = this.blogService.blogs;
     console.log(this.trendingBlogs);
+    this.apiService.getData();
   }
 }

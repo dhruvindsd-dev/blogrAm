@@ -1,0 +1,22 @@
+<div class="columns is-centered">
+  <div class="column is-6 notification">
+    <br />
+    <br />
+    <br />
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
+      <div class="field">
+        <label class="label">Blog title</label>
+        <div class="control">
+          <input type="text" class="input" ngModel name="name" />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Blog subtitle</label>
+        <div class="control">
+          <input type="text" class="input" ngModel name="type" />
+        </div>
+      </div>
+      <button class="button is-link is-light is-outlined">Test submit</button>
+    </form>
+  </div>
+</div>
