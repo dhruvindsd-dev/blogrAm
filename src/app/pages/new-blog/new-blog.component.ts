@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 @Component({
   selector: 'app-new-blog',
@@ -7,11 +7,47 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./new-blog.component.css'],
 })
 export class NewBlogComponent implements OnInit {
-  @ViewChild('f') form: NgForm;
-  constructor(private apiService: ApiService) {}
+  @ViewChild('title') title: ElementRef;
+  @ViewChild('subtitle') subtitle: ElementRef;
+  @ViewChild('content') content;
+  file: File;
+  constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {}
   onSubmit() {
-    this.apiService.sendData(this.form.value.name, this.form.value.type);
+    let data = new FormData();
+    data.append('title', this.title.nativeElement.innerText);
+    data.append('subtitle', this.subtitle.nativeElement.innerText);
+    data.append(
+      'content',
+      this.content.elementRef.nativeElement.querySelector('.ql-editor')
+        .innerHTML
+    );
+    this.apiService.createNewBlog(data).subscribe((responseData) => {
+      console.log(responseData);
+      this.router.navigate(['']);
+    });
+  }
+  onImg(e) {
+    this.file = e.target.files[0];
+  }
+  handleTyping(e: HTMLElement, max_type: number) {
+    if (e.innerText.length > max_type) {
+      e.style.border = '2px solid red';
+    } else if (e.innerText.length == 0) {
+      e.style.border = '2px solid red';
+    } else {
+      e.style.border = '2px solid white';
+    }
+  }
+  handleFocusOut(e: HTMLElement) {
+    console.log('some thing happened');
+
+    e.style.border = '2px solid rgba(17, 16, 16, 0.5)';
   }
 }
+
+// list of authentications i wanna add
+// 1. the length of the word
+// 2. requred field
+// 3. a valid img

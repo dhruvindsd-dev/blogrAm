@@ -15,3 +15,25 @@ img {
   z-index: 100;
   transition: background-color 0.4s, padding 0.4s;
 }
+a {
+  transition: 0.2s;
+}
+
+.ql-toolbar {
+  border: 2px solid rgba(0, 0, 0, 0.534) !important;
+  border-radius: 5px 5px 0px 0px;
+  z-index: 10;
+  width: 100%;
+  background-color: rgb(216, 216, 216);
+  top: 10px;
+  position: sticky;
+}
+button {
+  transition: 0.2s;
+}
+
+.ql-editor {
+  min-height: 40vh;
+  border: 1px solid black;
+  border-top: 0pxq;
+}

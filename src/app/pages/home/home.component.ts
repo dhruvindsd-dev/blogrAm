@@ -13,11 +13,9 @@ export class HomeComponent implements OnInit {
   constructor(
     private blogService: BlogService,
     private apiService: ApiService
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     this.trendingBlogs = this.blogService.blogs;
-    console.log(this.trendingBlogs);
-    this.apiService.getData();
   }
+
+  ngOnInit(): void {}
 }

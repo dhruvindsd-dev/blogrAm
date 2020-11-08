@@ -1,0 +1,120 @@
+<app-header></app-header>
+<div class="hero is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-5">
+          <p class="has-text-centered title">
+            {{ isSignUpForm ? "Sign Up " : "Sign In" }}
+          </p>
+          <app-error-popup *ngIf="!!errorMsg">{{ errorMsg }}</app-error-popup>
+          <div style="display: flex; justify-content: center" *ngIf="isLoading">
+            <app-loader></app-loader>
+          </div>
+          <form (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf="!isLoading">
+            <div class="field" *ngIf="isSignUpForm">
+              <label class="label">Username</label>
+              <div class="control">
+                <input
+                  type="text"
+                  class="input"
+                  name="username"
+                  ngModel
+                  required
+                  #username="ngModel"
+                />
+              </div>
+              <p
+                class="help is-danger"
+                *ngIf="username.touched && username.invalid"
+              >
+                Enter a valid username
+              </p>
+            </div>
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control">
+                <input
+                  type="email"
+                  class="input"
+                  name="email"
+                  email
+                  ngModel
+                  required
+                  #email="ngModel"
+                />
+              </div>
+              <p class="help is-danger" *ngIf="email.touched && email.invalid">
+                Enter a valid Email
+              </p>
+            </div>
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="field">
+                <div class="control has-icons-right">
+                  <input
+                    [type]="showPassword ? 'text' : 'password'"
+                    class="input"
+                    name="password"
+                    ngModel
+                    required
+                    #password="ngModel"
+                  />
+                  <span
+                    style="cursor: pointer"
+                    class="icon is-right is-large has-text-dark"
+                    (click)="togglePasswordVisibility(password_visibility)"
+                  >
+                    <i class="far fa-eye-slash" #password_visibility></i>
+                  </span>
+                </div>
+              </div>
+              <p
+                class="help is-danger"
+                *ngIf="password.touched && password.invalid"
+              >
+                Enter a valid password
+              </p>
+            </div>
+            <div class="field" *ngIf="isSignUpForm">
+              <label class="label">Confirm Password</label>
+              <div class="control">
+                <input
+                  [type]="showPassword ? 'text' : 'password'"
+                  class="input"
+                  name="confirmPassword"
+                  ngModel
+                  required
+                  #confirmPassword="ngModel"
+                />
+              </div>
+              <p
+                class="help is-danger"
+                *ngIf="
+                  confirmPassword.touched &&
+                  confirmPassword.value !== password.value
+                "
+              >
+                Passwords do not match
+              </p>
+            </div>
+            <div class="field">
+              <div class="control">
+                <button
+                  class="button is-link is-light is-outlined"
+                  [disabled]="
+                    isSignUpForm
+                      ? !f.valid || !(password.value == f.value.confirmPassword)
+                      : !f.valid
+                  "
+                >
+                  SignUp
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

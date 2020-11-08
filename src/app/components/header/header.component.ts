@@ -1,4 +1,5 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,14 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   transparent: boolean = true;
-  constructor() {}
+  isAuthenticated: boolean = false;
+  constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.user.subscribe((responseData) => {
+      this.isAuthenticated = !!responseData;
+    });
+  }
 
   onScroll(navbar) {
     if (window.pageYOffset > 100 && this.transparent) {

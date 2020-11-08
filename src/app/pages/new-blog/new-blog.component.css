@@ -1,0 +1,17 @@
+.ql-toolbar {
+  border: 2px solid rgba(0, 0, 0, 0.534) !important;
+  border-radius: 5px 5px 0px 0px;
+  z-index: 10;
+  width: 100%;
+  background-color: rgb(172, 172, 172);
+  top: 10px;
+  position: sticky;
+  z-index: 10;
+}
+button {
+  transition: 0.2s;
+}
+[contenteditable] {
+  outline: 0px solid transparent;
+  border-radius: 3px;
+}

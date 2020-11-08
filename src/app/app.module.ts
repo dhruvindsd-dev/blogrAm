@@ -13,6 +13,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from './services/api.service';
 import { BlogPageComponent } from './pages/blog-page/blog-page.component';
 import { NewBlogComponent } from './pages/new-blog/new-blog.component';
+import { AuthService } from './auth/auth.service';
+import { RegisterationComponent } from './pages/registeration/registeration.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { ErrorPopupComponent } from './components/error-popup/error-popup.component';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,9 @@ import { NewBlogComponent } from './pages/new-blog/new-blog.component';
     SmallBlogComponent,
     BlogPageComponent,
     NewBlogComponent,
+    RegisterationComponent,
+    LoaderComponent,
+    ErrorPopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,8 +39,9 @@ import { NewBlogComponent } from './pages/new-blog/new-blog.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    QuillModule.forRoot(),
   ],
-  providers: [BlogService, ApiService],
+  providers: [BlogService, ApiService, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
