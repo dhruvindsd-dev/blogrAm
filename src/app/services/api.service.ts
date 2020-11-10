@@ -1,6 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+export interface blogResponseData {
+  blogs: [];
+  totalPages: string;
+  totalBlogs: string;
+}
+
 @Injectable()
 export class ApiService {
   serverUrl: string = 'http://127.0.0.1:8000';
@@ -37,8 +43,16 @@ export class ApiService {
   createNewBlog(form: FormData) {
     return this.http.post(`${this.serverUrl}/new-user-blog`, form, {
       headers: new HttpHeaders({
-        Authorization: 'Token ed2d95442efed7488fcebe33d5a939138a231817',
+        Authorization: 'Token ',
       }),
+    });
+  }
+
+  getHomeBlogs(page: string = '1') {
+    return this.http.get(`${this.serverUrl}/get-all-blogs`, {
+      params: {
+        pageNo: page,
+      },
     });
   }
 }

@@ -25,7 +25,9 @@
   <div class="navbar-menu" id="navMenu">
     <div class="navbar-end">
       <div class="navbar-item" *ngIf="isAuthenticated">
-        <a class="button is-link is-light is-outlined">New Blog</a>
+        <a routerLink="/new-blog" class="button is-link is-light is-outlined"
+          >New Blog</a
+        >
       </div>
       <div class="navbar-item" *ngIf="!isAuthenticated">
         <a
@@ -44,7 +46,9 @@
         </a>
       </div>
       <div class="navbar-item" *ngIf="isAuthenticated">
-        <a class="button is-link is-light is-outlined"> Logout </a>
+        <a class="button is-link is-light is-outlined" (click)="onLogout()">
+          Logout
+        </a>
       </div>
       <a class="navbar-item">
         <p class="icon is-size-4">

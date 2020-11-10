@@ -56,6 +56,7 @@ export class RegisterationComponent implements OnInit {
       (responseData) => {
         this.isLoading = false;
         this.errorMsg = '';
+        this.router.navigate(['']);
       },
       (errorData) => {
         this.errorMsg = errorData;

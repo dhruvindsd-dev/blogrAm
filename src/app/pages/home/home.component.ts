@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { blogModal } from 'src/app/modals/blog.modal';
-import { ApiService } from 'src/app/services/api.service';
+import { ApiService, blogResponseData } from 'src/app/services/api.service';
 import { BlogService } from 'src/app/services/blog.service';
 
 @Component({
@@ -9,13 +9,21 @@ import { BlogService } from 'src/app/services/blog.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  trendingBlogs: blogModal[];
+  featuredBlogs: blogModal[];
   constructor(
     private blogService: BlogService,
     private apiService: ApiService
   ) {
-    this.trendingBlogs = this.blogService.blogs;
+    this.featuredBlogs = this.blogService.blogs;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.apiService
+      .getHomeBlogs()
+      .subscribe((responseData: blogResponseData) => {
+        for (let blog of responseData.blogs) {
+          this.blogService.createNewBlog(blog);
+        }
+      });
+  }
 }

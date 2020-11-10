@@ -33,4 +33,7 @@ export class HeaderComponent implements OnInit {
       navbar.style.backgroundColor = 'transparent';
     }
   }
+  onLogout() {
+    this.authService.logOut();
+  }
 }

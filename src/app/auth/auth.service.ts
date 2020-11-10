@@ -33,9 +33,12 @@ export class AuthService {
             new User(
               responseData.username,
               responseData.email,
-              responseData.email
+              responseData.token
             )
           );
+          localStorage.setItem('username', responseData.username);
+          localStorage.setItem('email', responseData.email);
+          localStorage.setItem('token', responseData.token);
         })
       );
   }
@@ -55,14 +58,22 @@ export class AuthService {
             new User(
               responseData.username,
               responseData.email,
-              responseData.email
+              responseData.token
             )
           );
+          localStorage.setItem('username', responseData.username);
+          localStorage.setItem('email', responseData.email);
+          localStorage.setItem('token', responseData.token);
         })
       );
   }
 
-  logOut() {}
+  logOut() {
+    localStorage.removeItem('username');
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+    this.user.next(null);
+  }
 
   handleError(errorMsg: HttpErrorResponse) {
     // set some custom error message
@@ -76,5 +87,14 @@ export class AuthService {
     }
 
     return throwError(msg);
+  }
+
+  autologin() {
+    const username = localStorage.getItem('username');
+    const email = localStorage.getItem('email');
+    const token = localStorage.getItem('token');
+    if (username && email && token) {
+      this.user.next(new User(username, email, token));
+    }
   }
 }

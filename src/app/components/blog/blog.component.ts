@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { blogModal } from 'src/app/modals/blog.modal';
 import { BlogService } from 'src/app/services/blog.service';
 
@@ -8,6 +8,7 @@ import { BlogService } from 'src/app/services/blog.service';
   styleUrls: ['./blog.component.css'],
 })
 export class BlogComponent implements OnInit {
+  @Input('blog') blogData: blogModal;
   constructor() {}
 
   ngOnInit(): void {}

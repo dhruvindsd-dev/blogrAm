@@ -28,22 +28,23 @@
     </div>
   </div>
 </div>
+
 <div class="section">
   <p class="is-size-4 has-text-weight-bold section">
     <span class="icon is-large"><i class="fas fa-chart-line"></i></span>
-    <span>TRENDING BLOGS</span>
+    <span>FEATURED BLOGS</span>
   </p>
   <div class="columns is-multiline">
-    <div class="column is-4" *ngFor="let blog of trendingBlogs">
-      <app-small-blog></app-small-blog>
+    <div class="column is-4" *ngFor="let blog of featuredBlogs">
+      <app-small-blog [blog]="blog"></app-small-blog>
     </div>
   </div>
   <hr />
   <div class="columns">
     <!-- for blogs -->
     <div class="column is-8">
-      <div *ngFor="let blog of trendingBlogs">
-        <app-blog></app-blog>
+      <div *ngFor="let blog of featuredBlogs">
+        <app-blog [blog]="blog"></app-blog>
         <hr />
       </div>
     </div>
