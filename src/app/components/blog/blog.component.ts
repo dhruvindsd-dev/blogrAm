@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { blogModal } from 'src/app/modals/blog.modal';
 import { BlogService } from 'src/app/services/blog.service';
 

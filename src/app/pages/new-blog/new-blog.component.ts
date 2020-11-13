@@ -24,7 +24,6 @@ export class NewBlogComponent implements OnInit {
         .innerHTML
     );
     this.apiService.createNewBlog(data).subscribe((responseData) => {
-      console.log(responseData);
       this.router.navigate(['']);
     });
   }
@@ -41,8 +40,6 @@ export class NewBlogComponent implements OnInit {
     }
   }
   handleFocusOut(e: HTMLElement) {
-    console.log('some thing happened');
-
     e.style.border = '2px solid rgba(17, 16, 16, 0.5)';
   }
 }

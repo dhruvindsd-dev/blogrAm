@@ -1,1 +1,5 @@
-<router-outlet></router-outlet>
+<app-error-popup *ngIf="!!errorMsg">
+  {{ errorMsg }}
+</app-error-popup>
+<app-loader *ngIf="isLoading"></app-loader>
+<router-outlet *ngIf="!isLoading && !!!errorMsg"></router-outlet>

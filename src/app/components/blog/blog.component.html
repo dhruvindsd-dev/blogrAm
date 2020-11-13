@@ -1,12 +1,21 @@
 <div class="columns is-mobile">
-  <div class="column is-3">
+  <div class="column is-3" style="padding: 0">
     <div class="tile is-child">
       <figure class="image is-square">
         <img [src]="blogData.img" alt="" class="" />
       </figure>
     </div>
   </div>
-  <div class="column is-9">
+  <div
+    class="column is-9"
+    style="
+      background-image: linear-gradient(
+        to right,
+        rgba(71, 71, 71, 0.705),
+        rgba(156, 153, 153, 0.596)
+      );
+    "
+  >
     <div class="level is-mobile" style="margin-bottom: 0px">
       <div class="level-left">
         <div class="level-item">
@@ -18,7 +27,8 @@
       </div>
     </div>
     <p class="is-size-4 is-size-5-mobile has-text-weight-bold has-text-black">
-      {{ blogData.title }}
+      {{ blogData.title }} Lorem ipsum dolor sit amet, consectetur adipisicing
+      elit. Beatae, totam.
     </p>
     <p class="is-size-5 is-hidden-mobile subtitle">
       {{ blogData.subtitle }}

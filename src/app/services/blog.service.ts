@@ -1,3 +1,4 @@
+import { TagPlaceholder } from '@angular/compiler/src/i18n/i18n_ast';
 import { Injectable } from '@angular/core';
 import { blogModal } from '../modals/blog.modal';
 @Injectable()
@@ -29,11 +30,10 @@ export class BlogService {
   //   ),
   // ];
   blogs: blogModal[] = [];
+  tags: { id: string; name: string }[] = [];
   constructor() {}
 
   createNewBlog(obj) {
-    console.log(this.blogs);
-
     this.blogs.push(
       new blogModal(
         obj.title,
@@ -44,5 +44,13 @@ export class BlogService {
         obj.username
       )
     );
+  }
+  createTags(tags: { id: string; name: string }[]) {
+    tags.map((tag) => {
+      this.tags.push(tag);
+    });
+  }
+  getBlog(id: number) {
+    return this.blogs[id];
   }
 }
