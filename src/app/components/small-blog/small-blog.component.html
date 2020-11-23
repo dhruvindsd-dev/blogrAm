@@ -11,12 +11,7 @@
   </div>
   <p class="is-size-4 title">{{ blogData.title }}</p>
   <p class="less-opacity">
-    {{
-      blogData.date.toLocaleString("default", { month: "short" }) +
-        " " +
-        blogData.date.getDate()
-    }}
-    .
+    <span>{{ blogData.date }} .</span>
     <span class="icon"><i class="fas fa-clock"></i></span>
     <span>2 min read</span>
   </p>

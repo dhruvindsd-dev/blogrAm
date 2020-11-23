@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth/auth.service';
+import { Tag } from './modals/blog.modal';
 import { ApiService, blogResponseData } from './services/api.service';
 import { BlogService } from './services/blog.service';
 
@@ -19,14 +20,10 @@ export class AppComponent implements OnInit {
   ) {}
   ngOnInit() {
     this.authService.autologin();
-    this.apiService.getHomeBlogs().subscribe(
+    this.apiService.fetchBlogs().subscribe(
       (responseData: blogResponseData) => {
-        console.log(responseData);
+        console.log('done fetching blogs bitch');
 
-        for (let blog of responseData.blogs) {
-          this.blogService.createNewBlog(blog);
-        }
-        this.blogService.createTags(responseData.tags);
         this.isLoading = false;
       },
       (errorResponse) => {

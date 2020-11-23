@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { User } from '../modals/user.modal';
@@ -16,7 +17,7 @@ export class AuthService {
   user = new BehaviorSubject<User>(null);
   // it store the previous value that means that you can always retreive the latest value.
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   signUp(username: string, email: string, password: string) {
     return this.http
@@ -73,6 +74,7 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('email');
     this.user.next(null);
+    this.router.navigate(['register/signin']);
   }
 
   handleError(errorMsg: HttpErrorResponse) {

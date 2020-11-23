@@ -1,21 +1,12 @@
-<div class="columns is-mobile">
-  <div class="column is-3" style="padding: 0">
-    <div class="tile is-child">
+<div class="columns hover_scale is-mobile" (click)="onClick()">
+  <div class="column" style="padding: 0">
+    <div>
       <figure class="image is-square">
         <img [src]="blogData.img" alt="" class="" />
       </figure>
     </div>
   </div>
-  <div
-    class="column is-9"
-    style="
-      background-image: linear-gradient(
-        to right,
-        rgba(71, 71, 71, 0.705),
-        rgba(156, 153, 153, 0.596)
-      );
-    "
-  >
+  <div class="column is-9 has-background-light">
     <div class="level is-mobile" style="margin-bottom: 0px">
       <div class="level-left">
         <div class="level-item">
@@ -26,19 +17,15 @@
         <div class="level-item">{{ blogData.username }}</div>
       </div>
     </div>
-    <p class="is-size-4 is-size-5-mobile has-text-weight-bold has-text-black">
-      {{ blogData.title }} Lorem ipsum dolor sit amet, consectetur adipisicing
-      elit. Beatae, totam.
+    <p class="is-size-4 is-size-6-mobile has-text-weight-bold has-text-black">
+      {{ blogData.title }}
     </p>
     <p class="is-size-5 is-hidden-mobile subtitle">
       {{ blogData.subtitle }}
     </p>
-    <p class="less-opacity">
-      {{
-        blogData.date.toLocaleString("default", { month: "short" }) +
-          " " +
-          blogData.date.getDate()
-      }}. <span class="icon"><i class="fas fa-clock"></i></span>
+    <p class="less-opacity is-size-7">
+      {{ blogData.date }}.
+      <span class="icon"><i class="fas fa-clock"></i></span>
       <span>2 min read</span>
     </p>
   </div>

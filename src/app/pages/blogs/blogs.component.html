@@ -1,1 +1,41 @@
-<p class="title">blogs page works</p>
+<div class="section" infiniteScroll (scrolled)="onScroll()">
+  <p class="is-size-3 mb-6" *ngIf="!!selectedTag">
+    Showing blogs with tag
+    <span class="has-text-danger has-text-weight-bold">
+      {{ selectedTag }}
+    </span>
+  </p>
+  <p class="is-size-3 mb-6 has-text-weight-bold" *ngIf="!selectedTag">
+    All blogs
+  </p>
+
+  <div class="columns">
+    <!-- for blogs -->
+    <div class="column is-8">
+      <div *ngFor="let blog of blogs; let i = index">
+        <app-blog [blog]="blog"></app-blog>
+        <hr />
+      </div>
+      <p class="has-text-centered" *ngIf="isLoading">
+        <app-loader></app-loader>
+      </p>
+      <div class="notification is-light" *ngIf="!!error">
+        {{ error }}
+      </div>
+    </div>
+    <!-- for tags -->
+    <div class="column is-4">
+      <div class="section" style="position: sticky; top: 10px">
+        <p class="is-size-4 has-text-weight-bold">
+          <span class="icon is-large has-text-danger"
+            ><i class="fas fa-fire"></i
+          ></span>
+          <span>Popular Tags</span>
+        </p>
+        <div class="buttons is-centered section">
+          <app-tag *ngFor="let tag of tags" [tagObj]="tag"></app-tag>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

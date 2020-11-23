@@ -10,7 +10,9 @@ import { BlogService } from 'src/app/services/blog.service';
 })
 export class BlogComponent implements OnInit {
   @Input('blog') blogData: blogModal;
-  constructor() {}
-
+  constructor(private router: Router) {}
   ngOnInit(): void {}
+  onClick() {
+    this.router.navigate(['blog', this.blogData.id]);
+  }
 }

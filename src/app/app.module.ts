@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +21,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { ErrorPopupComponent } from './components/error-popup/error-popup.component';
 import { QuillModule } from 'ngx-quill';
 import { httpConfigInterceptor } from './httpConfig.interceptor';
+import { TagComponent } from './components/tag/tag.component';
 
 @NgModule({
   declarations: [
@@ -33,9 +36,11 @@ import { httpConfigInterceptor } from './httpConfig.interceptor';
     RegisterationComponent,
     LoaderComponent,
     ErrorPopupComponent,
+    TagComponent,
   ],
   imports: [
     BrowserModule,
+    InfiniteScrollModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
