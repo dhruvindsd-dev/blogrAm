@@ -1,34 +1,41 @@
-<!-- background-image: url(''); -->
-<div
-  class="hero is-fullheight"
-  [ngStyle]="{ 'background-image': 'url(' + blogdata.img + ')' }"
-  style="background-position: center; background-size: cover; min-height: 90vh"
->
-  <div class="hero-body" style="backdrop-filter: brightness(0.3)">
-    <div class="has-text-centered container has-text-light">
-      <p
-        class="is-size-1 is-size-2-mobile alegreya has-text-weight-medium is-uppercase"
-      >
-        {{ blogdata.title }}
-      </p>
-      <p class="is-size-4 is-size-5-mobile has-text-light less-opacity">
-        {{ blogdata.subtitle }}
-      </p>
-      <p class="is-size-6" style="margin-top: 20px">
-        <span class="icon"><i class="fas fa-clock"></i></span>
-        <span id="time"></span>
-        <span>2 minute read</span>
-        <span class="icon is-size-7"><i class="fas fa-circle"></i></span>
-        <span>by {{ blogdata.username }} </span>
-      </p>
+<app-loader *ngIf="isLoading"></app-loader>
+
+<div *ngIf="!isLoading">
+  <div
+    class="hero is-fullheight"
+    [ngStyle]="{ 'background-image': 'url(' + blogdata.img + ')' }"
+    style="
+      background-position: center;
+      background-size: cover;
+      min-height: 90vh;
+    "
+  >
+    <div class="hero-body" style="backdrop-filter: brightness(0.3)">
+      <div class="has-text-centered container has-text-light">
+        <p
+          class="is-size-1 is-size-2-mobile alegreya has-text-weight-medium is-uppercase"
+        >
+          {{ blogdata.title }}
+        </p>
+        <p class="is-size-4 is-size-5-mobile has-text-light less-opacity">
+          {{ blogdata.subtitle }}
+        </p>
+        <p class="is-size-6" style="margin-top: 20px">
+          <span class="icon"><i class="fas fa-clock"></i></span>
+          <span id="time"></span>
+          <span>2 minute read</span>
+          <span class="icon is-size-7"><i class="fas fa-circle"></i></span>
+          <span>by {{ blogdata.username }} </span>
+        </p>
+      </div>
     </div>
   </div>
-</div>
-<div class="columns is-centered">
-  <div class="column is-8 section">
-    <div class="buttons is-centered are-small">
-      <app-tag *ngFor="let tag of blogdata.tags" [tagObj]="tag"></app-tag>
+  <div class="columns is-centered">
+    <div class="column is-8 section">
+      <div class="buttons is-centered are-small">
+        <app-tag *ngFor="let tag of blogdata.tags" [tagObj]="tag"></app-tag>
+      </div>
+      <div class="content" [innerHTML]="blogdata.content"></div>
     </div>
-    <div class="content" [innerHTML]="blogdata.content"></div>
   </div>
 </div>

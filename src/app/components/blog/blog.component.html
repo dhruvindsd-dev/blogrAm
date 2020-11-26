@@ -1,12 +1,15 @@
-<div class="columns hover_scale is-mobile" (click)="onClick()">
-  <div class="column" style="padding: 0">
-    <div>
-      <figure class="image is-square">
-        <img [src]="blogData.img" alt="" class="" />
-      </figure>
-    </div>
+<div
+  class="columns hover_scale is-mobile"
+  (click)="onClick()"
+  style="padding: 0; margin: 0"
+>
+  <div
+    class="column is-3 column_img"
+    [ngStyle]="{ 'background-image': 'url(' + blogData.img + ')' }"
+  >
+    <figure class="image is-square"></figure>
   </div>
-  <div class="column is-9 has-background-light">
+  <div class="column has-background-light hover_scale_column">
     <div class="level is-mobile" style="margin-bottom: 0px">
       <div class="level-left">
         <div class="level-item">

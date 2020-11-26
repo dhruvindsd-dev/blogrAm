@@ -30,52 +30,7 @@
 </div>
 
 <div class="section">
-  <p class="is-size-4 has-text-weight-bold section">
-    <span class="icon is-large"><i class="fas fa-chart-line"></i></span>
-    <span>FEATURED BLOGS</span>
-  </p>
-  <div class="columns is-multiline">
-    <div class="column is-4" *ngFor="let blog of featuredBlogs">
-      <app-small-blog [blog]="blog"></app-small-blog>
-    </div>
-  </div>
-  <hr />
-  <div class="columns">
-    <!-- for blogs -->
-    <div class="column is-8">
-      <p class="is-size-4 has-text-weight-bold section">
-        <span class="icon is-large has-text-black"
-          ><i class="fas fa-glass-cheers"></i
-        ></span>
-        <span>Top Posts Of The Month </span>
-      </p>
-      <div *ngFor="let blog of featuredBlogs; let i = index">
-        <app-blog [blog]="blog"></app-blog>
-        <hr />
-      </div>
-    </div>
-    <!-- for tags -->
-    <div class="column is-4">
-      <div class="section" style="position: sticky; top: 10px">
-        <p class="is-size-4 has-text-weight-bold">
-          <span class="icon is-large has-text-danger"
-            ><i class="fas fa-fire"></i
-          ></span>
-          <span>Popular Tags</span>
-        </p>
-        <div class="buttons is-centered section">
-          <app-tag *ngFor="let tag of tags" [tagObj]="tag"></app-tag>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="section has-text-centered">
-    <a
-      routerLink="/blogs"
-      class="is-large button is-link is-danger is-light is-outlined"
-      >All blogs
-    </a>
-  </div>
+  <app-blogs></app-blogs>
 </div>
 <div class="footer has-background-dark has-text-light">
   <p class="has-text-centered">Some dem content</p>

@@ -21,10 +21,10 @@ export class BlogsComponent implements OnInit {
   ngOnInit(): void {
     //  pendign stuff :
     // add
-    this.route.queryParams.subscribe((params) => {
+    this.route.params.subscribe((params) => {
       // check if params exist
-      if (params.t) {
-        this.selectedTag = params.t;
+      if (params.tag) {
+        this.selectedTag = params.tag;
         this.apiService
           .fetchBlogWithTags(this.selectedTag)
           .subscribe((response) => {
@@ -33,8 +33,6 @@ export class BlogsComponent implements OnInit {
           });
       } else {
         this.apiService.fetchBlogs(this.currentPage).subscribe((response) => {
-          console.log('from all blogs');
-
           this.blogs = this.apiService.blogs;
           this.tags = this.apiService.tags;
         });
@@ -48,10 +46,21 @@ export class BlogsComponent implements OnInit {
   }
   loadInitalPosts() {}
   onScroll() {
+    console.log('scjrp;;om ');
+
     if (this.currentPage < this.apiService.totalPages) {
       this.currentPage++;
       this.isLoading = true;
-      this.apiService.fetchBlogs(this.currentPage).subscribe(
+      let blogObj;
+      if (this.selectedTag) {
+        blogObj = this.apiService.fetchBlogWithTags(
+          this.selectedTag,
+          this.currentPage
+        );
+      } else {
+        blogObj = this.apiService.fetchBlogs(this.currentPage);
+      }
+      blogObj.subscribe(
         (response) => {
           this.isLoading = false;
           this.blogs = this.apiService.blogs;

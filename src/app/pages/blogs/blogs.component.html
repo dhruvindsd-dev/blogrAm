@@ -1,4 +1,4 @@
-<div class="section" infiniteScroll (scrolled)="onScroll()">
+<div class="section">
   <p class="is-size-3 mb-6" *ngIf="!!selectedTag">
     Showing blogs with tag
     <span class="has-text-danger has-text-weight-bold">
@@ -9,9 +9,14 @@
     All blogs
   </p>
 
-  <div class="columns">
+  <div
+    class="columns is-centered"
+    infiniteScroll
+    infiniteScrollDistance="0.5"
+    (scrolled)="onScroll()"
+  >
     <!-- for blogs -->
-    <div class="column is-8">
+    <div class="column">
       <div *ngFor="let blog of blogs; let i = index">
         <app-blog [blog]="blog"></app-blog>
         <hr />

@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { blogModal } from 'src/app/modals/blog.modal';
@@ -9,13 +10,18 @@ import { BlogService } from 'src/app/services/blog.service';
   styleUrls: ['./blog-page.component.css'],
 })
 export class BlogPageComponent implements OnInit {
+  isLoading: boolean = true;
   blogdata: blogModal;
   constructor(private route: ActivatedRoute, private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.blogdata = this.apiService.getBlog(+params['id']);
-      console.log(this.blogdata.img);
+      // this.blogdata = this.apiService.getBlog(+params['id']);
+      this.apiService.getBlog(+params['id']).subscribe((response: any) => {
+        console.log(response);
+        this.isLoading = false;
+        this.blogdata = response.blog;
+      });
     });
   }
 }

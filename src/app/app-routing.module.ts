@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'blog/:id', component: BlogPageComponent },
   { path: 'new-blog', component: NewBlogComponent },
   { path: 'register/:type', component: RegisterationComponent }, // sign in sign up
-  { path: 'blogs', component: BlogsComponent }, // all the blogs
+  { path: 'tag/:tag', component: BlogsComponent }, // all the blogs
 ];
 
 @NgModule({
