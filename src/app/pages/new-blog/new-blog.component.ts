@@ -10,7 +10,7 @@ export class NewBlogComponent implements OnInit {
   @ViewChild('title') title: ElementRef;
   @ViewChild('subtitle') subtitle: ElementRef;
   @ViewChild('content') content;
-  file: File;
+  @ViewChild('imgUpload') img;
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {}
@@ -23,13 +23,12 @@ export class NewBlogComponent implements OnInit {
       this.content.elementRef.nativeElement.querySelector('.ql-editor')
         .innerHTML
     );
+    data.append('img', this.img.nativeElement.files[0]);
     this.apiService.createNewBlog(data).subscribe((responseData) => {
       this.router.navigate(['']);
     });
   }
-  onImg(e) {
-    this.file = e.target.files[0];
-  }
+
   handleTyping(e: HTMLElement, max_type: number) {
     if (e.innerText.length > max_type) {
       e.style.border = '2px solid red';
@@ -41,6 +40,15 @@ export class NewBlogComponent implements OnInit {
   }
   handleFocusOut(e: HTMLElement) {
     e.style.border = '2px solid rgba(17, 16, 16, 0.5)';
+  }
+  handleImgUpload(event, el, hero) {
+    console.log(el.files);
+    let file = this.img.nativeElement.files[0];
+    let reader = new FileReader();
+    reader.onloadend = () => {
+      hero.style.backgroundImage = 'url(' + reader.result + ')';
+    };
+    reader.readAsDataURL(file);
   }
 }
 

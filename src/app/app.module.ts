@@ -22,6 +22,8 @@ import { ErrorPopupComponent } from './components/error-popup/error-popup.compon
 import { QuillModule } from 'ngx-quill';
 import { httpConfigInterceptor } from './httpConfig.interceptor';
 import { TagComponent } from './components/tag/tag.component';
+import { UserComponent } from './pages/user/user.component';
+import { UserLinkComponent } from './components/user-link/user-link.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { TagComponent } from './components/tag/tag.component';
     LoaderComponent,
     ErrorPopupComponent,
     TagComponent,
+    UserComponent,
+    UserLinkComponent,
   ],
   imports: [
     BrowserModule,

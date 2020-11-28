@@ -7,7 +7,7 @@ export class blogModal {
     public content: string,
     public img: string,
     public date: Date,
-    public username: string,
+    public user: { username: string; id: number },
     public tags: Tag[]
   ) {
     this.date = new Date(date);

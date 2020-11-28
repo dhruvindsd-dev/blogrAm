@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -9,6 +9,8 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./registeration.component.css'],
 })
 export class RegisterationComponent implements OnInit {
+  @ViewChild('imgUpload') input: ElementRef;
+  @ViewChild('imgPreview') preview: ElementRef;
   isSignUpForm: boolean;
   showPassword: boolean = false;
   errorMsg: string = '';
@@ -30,6 +32,7 @@ export class RegisterationComponent implements OnInit {
       }
     });
   }
+
   togglePasswordVisibility(el) {
     el.classList.toggle('fa-eye');
     el.classList.toggle('fa-eye-slash');
@@ -39,13 +42,14 @@ export class RegisterationComponent implements OnInit {
     let authObj;
     this.isLoading = true;
     if (this.isSignUpForm) {
-      if (form.value) {
-        authObj = this.authService.signUp(
-          form.value.username,
-          form.value.email,
-          form.value.password
-        );
+      const formData = new FormData();
+      formData.append('username', form.value.username);
+      formData.append('password', form.value.password);
+      formData.append('email', form.value.email);
+      if (this.input.nativeElement.files[0]) {
+        formData.append('img', this.input.nativeElement.files[0]);
       }
+      authObj = this.authService.signUp(formData);
     } else {
       authObj = this.authService.getToken(
         form.value.email,
@@ -63,5 +67,13 @@ export class RegisterationComponent implements OnInit {
         this.isLoading = false;
       }
     );
+  }
+  handleImg() {
+    let file = this.input.nativeElement.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      this.preview.nativeElement.src = reader.result;
+    };
+    reader.readAsDataURL(file);
   }
 }

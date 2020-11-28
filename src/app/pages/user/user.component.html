@@ -1,0 +1,37 @@
+<div class="section">
+  <app-loader *ngIf="isLoading"></app-loader>
+  <div class="container" *ngIf="!isLoading">
+    <div class="columns is-mobile is-centered">
+      <div
+        class="column p-0 is-4"
+        style="display: flex; justify-content: center"
+      >
+        <figure
+          class="image"
+          style="
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+          "
+        >
+          <img [src]="user.img" alt="" />
+        </figure>
+      </div>
+      <div class="column is-4 is-6-mobile">
+        <div>
+          <p class="title">{{ user.username }}</p>
+          <p class="is-size-5 mt-3">{{ user.email }}</p>
+        </div>
+      </div>
+    </div>
+    <hr class="has-background-dark" />
+    <div class="">
+      <div class="columns is-multiline">
+        <div class="column is-3" *ngFor="let blog of blogs">
+          <app-small-blog [blog]="blog"></app-small-blog>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

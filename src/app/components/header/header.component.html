@@ -1,7 +1,8 @@
 <nav
   #navbar
   (window:scroll)="onScroll(navbar)"
-  class="navbar is-spaced is-fixed-top"
+  class="navbar is-fixed-top"
+  [ngClass]="{ 'is-spaced': spaced }"
 >
   <div class="navbar-brand">
     <div class="navbar-item">

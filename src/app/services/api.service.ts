@@ -80,7 +80,14 @@ export class ApiService {
       })
       .pipe(catchError(this.handleError), tap(this.assignBlogResponse));
   }
-
+  fetchUserBlogs(userId: string) {
+    return this.http.get(`${this.serverUrl}/get-user-blog/${userId}`).pipe(
+      catchError(this.handleError),
+      tap((response: any) => {
+        this.blogs = response.blogs;
+      })
+    );
+  }
   assignBlogResponse = (response: blogResponseData) => {
     console.log(response);
     console.log(this.blogs);

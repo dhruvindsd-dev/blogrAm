@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header [spaced]="false"></app-header>
 <div class="hero is-fullheight">
   <div class="hero-body">
     <div class="container">
@@ -12,6 +12,36 @@
             <app-loader></app-loader>
           </div>
           <form (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf="!isLoading">
+            <div *ngIf="isSignUpForm">
+              <div style="display: flex; justify-content: center">
+                <figure
+                  class="image is-128x128"
+                  style="
+                    border-radius: 50%;
+                    overflow: hidden;
+                    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+                  "
+                >
+                  <img #imgPreview src="assets/profile.svg" alt="" />
+                </figure>
+              </div>
+              <div class="file mt-2" style="justify-content: center">
+                <label class="file-label">
+                  <input
+                    (change)="handleImg()"
+                    class="file-input"
+                    type="file"
+                    name="resume"
+                    #imgUpload
+                  />
+                  <span class="file-cta">
+                    <span class="file-icon mr-0">
+                      <i class="fas fa-upload"></i>
+                    </span>
+                  </span>
+                </label>
+              </div>
+            </div>
             <div class="field" *ngIf="isSignUpForm">
               <label class="label">Username</label>
               <div class="control">
@@ -108,7 +138,7 @@
                       : !f.valid
                   "
                 >
-                  SignUp
+                  {{ isSignUpForm ? "Sign Up " : "Sign In" }}
                 </button>
               </div>
             </div>

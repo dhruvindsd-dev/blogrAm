@@ -38,6 +38,7 @@ button {
   border-top: 0pxq;
 }
 .column_img {
+  background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   object-fit: cover;

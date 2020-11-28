@@ -1,8 +1,4 @@
-<div
-  class="columns hover_scale is-mobile"
-  (click)="onClick()"
-  style="padding: 0; margin: 0"
->
+<div class="columns hover_scale is-mobile" style="padding: 0; margin: 0">
   <div
     class="column is-3 column_img"
     [ngStyle]="{ 'background-image': 'url(' + blogData.img + ')' }"
@@ -10,7 +6,7 @@
     <figure class="image is-square"></figure>
   </div>
   <div class="column has-background-light hover_scale_column">
-    <div class="level is-mobile" style="margin-bottom: 0px">
+    <!-- <div class="level is-mobile" style="margin-bottom: 0px">
       <div class="level-left">
         <div class="level-item">
           <figure class="image is-square is-32x32">
@@ -19,17 +15,24 @@
         </div>
         <div class="level-item">{{ blogData.username }}</div>
       </div>
+    </div> -->
+    <!-- <a
+      href="https://coderbook.com/@marcus/generate-thumbnails-automatically-in-django-with-sorl-thumbnail/"
+      >by_ {{ blogData.username }}</a
+    > -->
+    <app-user-link [user]="blogData.user"></app-user-link>
+    <div (click)="onClick($event)">
+      <p class="is-size-4 is-size-6-mobile has-text-weight-bold has-text-black">
+        {{ blogData.title }}
+      </p>
+      <p class="is-size-5 is-hidden-mobile subtitle">
+        {{ blogData.subtitle }}
+      </p>
+      <p class="less-opacity is-size-7">
+        {{ blogData.date }}.
+        <span class="icon"><i class="fas fa-clock"></i></span>
+        <span>2 min read</span>
+      </p>
     </div>
-    <p class="is-size-4 is-size-6-mobile has-text-weight-bold has-text-black">
-      {{ blogData.title }}
-    </p>
-    <p class="is-size-5 is-hidden-mobile subtitle">
-      {{ blogData.subtitle }}
-    </p>
-    <p class="less-opacity is-size-7">
-      {{ blogData.date }}.
-      <span class="icon"><i class="fas fa-clock"></i></span>
-      <span>2 min read</span>
-    </p>
   </div>
 </div>

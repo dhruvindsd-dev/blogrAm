@@ -5,6 +5,7 @@ import { BlogsComponent } from './pages/blogs/blogs.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NewBlogComponent } from './pages/new-blog/new-blog.component';
 import { RegisterationComponent } from './pages/registeration/registeration.component';
+import { UserComponent } from './pages/user/user.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'new-blog', component: NewBlogComponent },
   { path: 'register/:type', component: RegisterationComponent }, // sign in sign up
   { path: 'tag/:tag', component: BlogsComponent }, // all the blogs
+  { path: 'user/:username/:id', component: UserComponent }, // all the blogs
 ];
 
 @NgModule({

@@ -28,6 +28,8 @@ export class BlogsComponent implements OnInit {
         this.apiService
           .fetchBlogWithTags(this.selectedTag)
           .subscribe((response) => {
+            console.log(response);
+
             this.blogs = this.apiService.blogs;
             this.tags = this.apiService.tags;
           });
