@@ -1,19 +1,39 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BlogPageComponent } from './pages/blog-page/blog-page.component';
 import { BlogsComponent } from './pages/blogs/blogs.component';
 import { HomeComponent } from './pages/home/home.component';
-import { NewBlogComponent } from './pages/new-blog/new-blog.component';
-import { RegisterationComponent } from './pages/registeration/registeration.component';
-import { UserComponent } from './pages/user/user.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'blog/:id', component: BlogPageComponent },
-  { path: 'new-blog', component: NewBlogComponent },
-  { path: 'register/:type', component: RegisterationComponent }, // sign in sign up
-  { path: 'tag/:tag', component: BlogsComponent }, // all the blogs
-  { path: 'user/:username/:id', component: UserComponent }, // all the blogs
+  {
+    path: 'blog/:id',
+    loadChildren: () =>
+      import('./pages/blog-page/blog-page.module').then(
+        (e) => e.BlogPageModule
+      ),
+  },
+  {
+    path: 'new-blog',
+    loadChildren: () =>
+      import('./pages/new-blog/new-blog.module').then((e) => e.NewBlogModule),
+  },
+  {
+    path: 'register/:type',
+    loadChildren: () =>
+      import('./pages/registeration/registeration.module').then(
+        (e) => e.RegisterationModule
+      ),
+  },
+  {
+    path: 'tag/:tag',
+    component: BlogsComponent,
+  }, // all the blogs
+
+  {
+    path: 'user/:username/:id',
+    loadChildren: () =>
+      import('./pages/user/user.module').then((e) => e.UserModule),
+  }, // all the blogs
 ];
 
 @NgModule({
